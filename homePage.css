@@ -1,0 +1,501 @@
+/* homePage.css - הקוד המלא, שינויים בעיקר בחלק של cart-item */
+
+/* --- כללי --- */
+body {
+    font-family: 'Georgia', serif;
+    background-color: #f5f5dc;
+    color: #36454F;
+    line-height: 1.6;
+    direction: rtl;
+    text-align: right;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    color: #5C4033;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 3.5rem;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #D4AF37;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* --- Header --- */
+header {
+    background-color: #5C4033;
+    color: #F8F8F8;
+    padding: 1.5rem 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+header h1 {
+    color: #F8F8F8;
+    margin: 0;
+    font-size: 3.8rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Main Content Layout --- */
+main {
+    flex-grow: 1;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* העיצוב החדש עבור products-list כדי להכיל את המוצרים והעגלה זה לצד זה */
+.products-list {
+    display: grid;
+    grid-template-columns: 1fr; /* ברירת מחדל: עמודה אחת למובייל */
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* עבור מסכים גדולים יותר, הצג מוצרים ועגלה זה לצד זה */
+@media (min-width: 992px) {
+    .products-list {
+        grid-template-columns: 3fr 1fr;
+    }
+}
+
+
+/* --- Products Section --- */
+.products {
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.products h2 {
+    color: #8B0000;
+    border-bottom-color: #8B0000;
+    grid-column: 1 / -1;
+    margin-bottom: 1rem;
+}
+
+/* עיצוב של כל פריט מוצר בודד */
+.item {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+.item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.item-container {
+    width: 100%;
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-img {
+    width: 100%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.8rem;
+    background-color: #f9f9f9;
+}
+
+.item-img img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.desc {
+    padding: 0 0.5rem;
+    width: 100%;
+}
+
+.desc h3 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #36454F;
+    margin-bottom: 0.2rem;
+    text-align: center;
+}
+
+/* --- Cart Section --- */
+.cart {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    position: sticky;
+    top: 2rem;
+}
+
+.cart-header {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    font-weight: bold;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+    color: #5C4033;
+    font-size: 1.1rem;
+}
+
+.cart-header .column1 { text-align: right; }
+.cart-header .column2 { text-align: center; }
+.cart-header .column3 { text-align: center; }
+
+
+.cart-items {
+    flex-grow: 1;
+    margin-bottom: 1rem;
+    /* overflow-y: auto; */
+    /* max-height: 400px; */
+}
+
+/* --- סגנון לפריט בודד בתוך העגלה (יווצר על ידי JS) --- */
+.cart-item {
+    display: grid;
+    /* פריסה של הפריט: תמונה+שם, מחיר, כמות */
+    grid-template-columns: 3fr 1fr 1fr; /* יחס דומה לכותרות העגלה */
+    gap: 0.5rem; /* רווח קטן בין העמודות */
+    align-items: center; /* יישור אנכי למרכז */
+    padding: 0.5rem 0; /* ריפוד אנכי לכל פריט */
+    border-bottom: 1px dashed #eee; /* קו הפרדה עדין בין פריטים */
+    font-size: 0.9rem; /* גודל פונט קטן יותר לפריט */
+    color: #36454F;
+}
+
+.cart-item:last-child {
+    border-bottom: none; /* אין קו הפרדה לפריט האחרון */
+}
+
+/* התאמה לקלאסים מתוך ה-JS שלך */
+.cart-item .item-info { /* עוטף לתמונה ושם */
+    display: flex;
+    align-items: center;
+    text-align: right; /* יישור טקסט בתוך ה-info */
+    gap: 0.5rem; /* רווח בין התמונה לכותרת */
+    /* background-color: lightblue; /* לצורך דיבוג */
+}
+
+.cart-item .item-info img { /* התמונה בפועל */
+    width: 50px; /* רוחב קבוע לתמונה */
+    height: 50px; /* גובה קבוע לתמונה */
+    object-fit: contain; /* התאמה של התמונה למידות בלי לחתוך */
+    border-radius: 5px; /* פינות מעוגלות */
+    flex-shrink: 0; /* למנוע מהתמונה להתכווץ */
+}
+
+.cart-item .item-info h4 { /* שם המוצר */
+    font-weight: bold;
+    margin: 0; /* מבטל מרווחים פנימיים של H4 */
+    font-size: 1rem;
+    line-height: 1.2;
+    color: #36454F;
+}
+
+/* אם תבחרי להוסיף 'type' למוצר ב-JS, הוסיפי את זה: */
+/*
+.cart-item .item-details .item-type {
+    font-size: 0.8rem;
+    color: #666;
+}
+*/
+
+.cart-item .unit-price { /* מחיר יחידה - השתמשת בשם קלאס זה */
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.95rem;
+    white-space: nowrap; /* מונע שבירת שורה למחיר */
+}
+
+.cart-item .units { /* כפתורי כמות - השתמשת בשם קלאס זה */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+}
+
+.cart-item .units .btn { /* כפתורי פלוס/מינוס ספציפיים בתוך העגלה */
+    background-color: #D4AF37; /* צבע זהב לכפתורי כמות */
+    color: #5C4033;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.9rem;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0; /* מונע מכפתורים להתכווץ */
+}
+
+.cart-item .units .btn:hover {
+    background-color: #C0A040;
+}
+
+.cart-item .units .number { /* המספר המציג את הכמות */
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0 0.3rem;
+    flex-shrink: 0;
+}
+
+/* אופציונלי: כפתור הסרה נפרד */
+.remove-item-btn {
+    background-color: #A52A2A; /* אדום כהה יותר */
+    color: #F8F8F8;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.remove-item-btn:hover {
+    background-color: #CC3333;
+}
+
+
+.cart-footer {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 1rem;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #36454F;
+}
+
+.cart-footer .subtotal {
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.cart-footer .checkout {
+    background-color: #8B0000;
+    color: #F8F8F8;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.cart-footer .checkout:hover {
+    background-color: #A52A2A;
+    transform: translateY(-2px);
+}
+
+/* --- Buttons (כללי) --- */
+button {
+    background-color: #8B0000;
+    color: #F8F8F8;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 0.8rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #A52A2A;
+    transform: translateY(-2px);
+}
+
+/* --- Media Queries for Responsiveness --- */
+@media (min-width: 1200px) {
+    .products {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .products {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 479px) {
+    .products {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 991px) {
+    .products-list {
+        grid-template-columns: 1fr;
+    }
+
+    .cart {
+        position: static;
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .products {
+        padding: 1.5rem;
+    }
+
+    .item-img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    .products {
+        padding: 1rem;
+    }
+
+    .item-img {
+        height: 180px;
+    }
+}
+
+/* --- Footer --- */
+footer {
+    background-color: #36454F;
+    color: #F8F8F8;
+    padding: 1.5rem 0;
+    text-align: center;
+    margin-top: auto;
+    font-size: 0.9rem;
+}
+/* ב-homePage.css */
+
+.login-section {
+    max-width: 400px;
+    margin: 3rem auto; /* מרכוז ורווחים */
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: right; /* יישור לימין ב-RTL */
+}
+
+.login-section h2 {
+    font-size: 2rem;
+    color: #5C4033;
+    margin-bottom: 1.5rem;
+    text-align: center; /* מרכז את הכותרת */
+    border-bottom: none; /* מבטל קו תחתון אם קיים */
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #36454F;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* חשוב לרוחב מלא */
+}
+
+.login-form button {
+    width: 100%; /* כפתור ברוחב מלא */
+    background-color: #8B0000;
+    color: #F8F8F8;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.login-form button:hover {
+    background-color: #A52A2A;
+}
+
+.login-message {
+    font-weight: bold;
+    margin-top: -0.5rem; /* קצת למעלה */
+    margin-bottom: 1rem;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./homePage.css">
+    </head>
+<body>
+
+    <header>
+        
+       <h1>The Harvest House</h1>
+    </header>
+
+    <main>
+    <section class="login-section">
+        <h2>כניסת מנהל</h2>
+        <div id="loginMessage" class="login-message" style="color: red; margin-bottom: 1rem; text-align: center;"></div>
+        <form id="loginForm" class="login-form">
+            <label for="username">שם משתמש:</label>
+            <input type="text" id="username" required>
+
+            <label for="password">סיסמה:</label>
+            <input type="password" id="password" required>
+
+            <button type="submit">התחבר</button>
+        </form>
+    </section>
+        <div class="products-list">
+             <div class="products">
+                
+                 
+             </div>
+
+             <div class="cart">
+
+            <div class="cart-header">
+              <!--- <div class="column1">Item</div>
+                <div class="column2">Unit price</div>
+                <div class="column3">Units</div> -->
+            </div>
+
+            <div class="cart-items">
+                <!-- render cart items here -->
+            </div>
+
+            <div class="cart-footer">
+
+                <div class="subtotal">
+                    Subtotal (0 items): $0
+                </div>
+                <div class="checkout">
+                    Proceed to checkout
+                </div>
+            </div>   
+
+            </div>  
+
+        </div>
+      
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 החנות שלי. כל הזכויות שמורות.</p>
+    </footer>
+
+
+    <script src="./products.js"></script>
+    <script src="./app.js"></script>
+    <script src="./AdminLogin.js"></script> 
+
+</body>
+</html>

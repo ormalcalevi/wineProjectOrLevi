@@ -1,0 +1,145 @@
+.admin-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        .admin-section {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .admin-section:last-child {
+            border-bottom: none;
+        }
+        .admin-section h2 {
+            font-size: 2rem;
+            color: #5C4033;
+            margin-bottom: 1.5rem;
+            text-align: right; /* יישור לימין */
+        }
+        .product-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #36454F;
+        }
+        .product-form input[type="text"],
+        .product-form input[type="number"],
+        .product-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* חשוב לרוחב מלא */
+        }
+        .product-form button {
+            background-color: #8B0000;
+            color: #F8F8F8;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .product-form button:hover {
+            background-color: #A52A2A;
+        }
+
+        /* עיצוב רשימת מוצרים לניהול */
+        .admin-products-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .admin-product-item {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            position: relative;
+        }
+        .admin-product-item img {
+            max-width: 100px;
+            max-height: 100px;
+            object-fit: contain;
+            margin-bottom: 0.5rem;
+            align-self: center;
+        }
+        .admin-product-item h4 {
+            font-size: 1.2rem;
+            margin: 0;
+            color: #36454F;
+        }
+        .admin-product-item p {
+            margin: 0.2rem 0;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .admin-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+            justify-content: flex-end; /* יישור כפתורים לימין */
+        }
+        .admin-actions button {
+            padding: 0.6rem 1rem;
+            font-size: 0.85rem;
+        }
+        .admin-actions .edit-btn {
+            background-color: #D4AF37; /* צהוב-זהב */
+        }
+        .admin-actions .edit-btn:hover {
+            background-color: #C0A040;
+        }
+        .admin-actions .delete-btn {
+            background-color: #A52A2A; /* אדום כהה */
+        }
+        .admin-actions .delete-btn:hover {
+            background-color: #CC3333;
+        }
+
+        /* מודל לעריכה */
+        .modal {
+            display: none; /* מוסתר כברירת מחדל */
+            position: fixed; /* נשאר במקום גם בגלילה */
+            z-index: 1; /* עולה מעל תוכן אחר */
+            left: 0;
+            top: 0;
+            width: 100%; /* רוחב מלא */
+            height: 100%; /* גובה מלא */
+            overflow: auto; /* אפשרות גלילה אם התוכן גדול מדי */
+            background-color: rgba(0,0,0,0.4); /* רקע שחור שקוף */
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; /* 15% מהחלק העליון ומרכוז */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* רוחב */
+            max-width: 600px;
+            border-radius: 10px;
+            position: relative;
+        }
+        .close-button {
+            color: #aaa;
+            float: left; /* יישור לשמאל ב-RTL */
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
