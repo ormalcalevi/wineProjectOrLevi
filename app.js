@@ -2,10 +2,20 @@ const productEl = document.querySelector(".products");
 const cartItemsEl = document.querySelector(".cart-items");
 const subtotalInCart = document.querySelector(".subtotal");
 
+function loadProductsForHomePage() {
+    const storedProducts = localStorage.getItem('adminProducts'); // קוראים את הנתונים שהמנהל שמר
+    if (storedProducts) {
+        return JSON.parse(storedProducts);
+    } else {
+        // אם אין כלום ב-localStorage (פעם ראשונה), נשתמש במערך PRODUCTS המקורי
+        return typeof PRODUCTS !== 'undefined' ? PRODUCTS : [];
+    }
+}
 
+let currentProducts = loadProductsForHomePage();
 
 function renderProdcuts() {
-  PRODUCTS.forEach((product) => {
+  currentProducts.forEach((product) => {
       productEl.innerHTML += `
             <div class="item">
                 <div class="item-container">
@@ -24,7 +34,10 @@ function renderProdcuts() {
         `;
   });
 }
-renderProdcuts();
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderProducts();
+});
 
 let cartArrey = [];
 

@@ -17,20 +17,26 @@
         <section class="admin-section">
             <h2>הוסף מוצר חדש</h2>
             <form id="addProductForm" class="product-form">
-                <label for="newProductId">ID:</label>
-                <input type="number" id="newProductId" required>
+
+           <label for="newProductId">ID:</label>
+                <input type="number" id="newProductId"> 
+                <div id="msg5"></div>
 
                 <label for="newProductName">שם המוצר:</label>
-                <input type="text" id="newProductName" required>
+                <input type="text" id="newProductName" >
+                <div id="msg1"></div>
 
                 <label for="newProductType">סוג:</label>
                 <input type="text" id="newProductType">
+                <div id="msg2"></div>
 
                 <label for="newProductPrice">מחיר:</label>
-                <input type="number" id="newProductPrice" placeholder="לדוגמה: 99" required>
+                <input type="number" id="newProductPrice" placeholder="לדוגמה: 99" >
+                <div id="msg3"></div>
 
                 <label for="newProductImageUrl">נתיב לתמונה:</label>
-                <input type="text" id="newProductImageUrl" placeholder="./pictures/MyProduct.png" required>
+                <input type="text" id="newProductImageUrl" placeholder="./pictures/MyProduct.png" >
+                <div id="msg4"></div>
 
                 <button type="submit">הוסף מוצר</button>
             </form>
