@@ -18,7 +18,7 @@
             font-size: 2rem;
             color: #5C4033;
             margin-bottom: 1.5rem;
-            text-align: right; /* יישור לימין */
+         
         }
         .product-form label {
             display: block;
@@ -144,6 +144,81 @@
             cursor: pointer;
         }
 
-        #msg{
-            color: red;
-        }
+      /* עיצוב כללי להודעות שגיאה */
+.error-message { /* השם class="error-message" מה-HTML שהמלצתי */
+    color: red;
+    font-size: 0.85em;
+    margin-top: 5px;
+    display: block;
+}
+
+/* עיצוב שדה קלט כשיש בו שגיאה */
+.error-input-border { /* הקלאס ששמתי בקוד JS */
+    border: 2px solid red;
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+/* עיצוב עבור כל הודעות השגיאה ב-div-ים עם ID-ים ספציפיים */
+
+/* עיצוב עבור msg1 (לדוגמה: שם המוצר) */
+#msg1 {
+    color: red; /* צבע טקסט אדום */
+    font-size: 0.9em; /* גודל פונט קטן יותר */
+    margin-top: 5px; /* רווח קטן מעל ההודעה */
+    display: block; /* לוודא שההודעה תופסת שורה משלה */
+    /* text-align: right; */ /* אם אתה רוצה ליישר לימין, בהתאם ל-dir="rtl" */
+}
+
+/* עיצוב עבור msg2 (לדוגמה: סוג המוצר) */
+#msg2 {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: block;
+}
+
+/* עיצוב עבור msg3 (לדוגמה: מחיר המוצר) */
+#msg3 {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: block;
+}
+
+/* עיצוב עבור msg4 (לדוגמה: נתיב לתמונה) */
+#msg4 {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: block;
+}
+#msg5 {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: block;
+}
+
+/* --- עיצוב נוסף שאפשר להוסיף עבור שדות הקלט עצמם כשחסר מידע --- */
+/* (הקלאס 'error-input-border' הומלץ בקוד ה-JavaScript הקודם) */
+.error-input-border {
+    border: 2px solid red; /* גבול אדום לשדה הקלט */
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); /* צל עדין בצבע אדום */
+}
+
+.button-link {
+    display: inline-block; /* כדי לאפשר רוחב, גובה וריפוד */
+    padding: 10px 20px;
+    background-color: #007bff; /* צבע כחול */
+    color: white;
+    text-align: center;
+    text-decoration: none; /* מסיר קו תחתון של קישור */
+    border-radius: 5px; /* פינות מעוגלות */
+    cursor: pointer; /* מראה סמן יד בלחיצה */
+    border: none;
+    font-size: 16px;
+}
+
+.button-link:hover {
+    background-color: #0056b3; /* שינוי צבע בלחיצה */
+}
